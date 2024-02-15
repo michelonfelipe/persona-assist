@@ -8,6 +8,7 @@ type Member struct {
 }
 
 type Persona struct {
-	Name    string
-	Attacks []Attack
+	Name       string
+	Attacks    []Attack
+	Weaknesses []AttackType
 }
