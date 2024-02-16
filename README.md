@@ -1,3 +1,5 @@
+![badge from build status](https://github.com/michelonfelipe/persona-assist/actions/workflows/build.yml/badge.svg?branch=main)
+
 # Persona assist
 
 ![example of assist feature being used on persona 3 reloaded](./persona-assist.gif)
