@@ -29,5 +29,5 @@ func TestSimpleWeakness(t *testing.T) {
 		Target:  data.Valkyrie,
 	}
 
-	assert.EqualValues(t, expected, *result, "If there is only one enemy, it should return the an attack that matches the enemy weakness")
+	assert.EqualValues(t, expected, *result, "If there is only one enemy, it should return the attack that matches the enemy weakness, and has the least cost")
 }

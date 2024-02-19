@@ -5,7 +5,7 @@ import "github.com/michelonfelipe/persona-assist/internal"
 var Orpheus = internal.Persona{
 	Name: "Orpheus",
 	Attacks: []internal.Attack{
-		Bash, Agi,
+		Bash, Agi, Agilao,
 	},
 	Weaknesses: []internal.AttackType{internal.Darkness, internal.Electricity},
 }

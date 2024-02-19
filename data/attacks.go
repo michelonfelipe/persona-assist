@@ -15,6 +15,12 @@ var Agi = internal.Attack{
 	Target: internal.Single,
 	Cost:   3,
 }
+var Agilao = internal.Attack{
+	Name:   "Agilao",
+	Type:   internal.Fire,
+	Target: internal.Single,
+	Cost:   6,
+}
 
 var SingleShot = internal.Attack{
 	Name:   "Single Shot",
