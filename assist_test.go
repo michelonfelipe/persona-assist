@@ -22,7 +22,7 @@ func TestSimpleWeakness(t *testing.T) {
 	enemies := []internal.Persona{data.Valkyrie}
 
 	result := Assist(party, enemies)
-	expected := Result{
+	expected := internal.Result{
 		Member:  data.Protagonist,
 		Persona: data.Orpheus,
 		Attack:  data.Agi,
