@@ -8,23 +8,20 @@ import (
 
 type SimpleCheck struct{}
 
-func (s SimpleCheck) Check(party internal.Party, weaknessByEnemy [][]internal.AttackType) *internal.Result {
+func (s SimpleCheck) Check(member internal.Member, weaknessByEnemy [][]internal.AttackType) *internal.Result {
 	for enemyIndex, enemyWeaknesses := range weaknessByEnemy {
-		for _, member := range party {
-			for _, persona := range member.Personas {
-				for _, attack := range attacksSortedByCost(persona.Attacks) {
-					if attack.Target == internal.All {
-						continue
-					}
+		for _, persona := range member.Personas {
+			for _, attack := range attacksSortedByCost(persona.Attacks) {
+				if attack.Target == internal.All {
+					continue
+				}
 
-					for _, weakness := range enemyWeaknesses {
-						if attack.Type == weakness {
-							return &internal.Result{
-								Member:      member,
-								Persona:     persona,
-								Attack:      attack,
-								TargetIndex: enemyIndex,
-							}
+				for _, weakness := range enemyWeaknesses {
+					if attack.Type == weakness {
+						return &internal.Result{
+							Persona:     persona,
+							Attack:      attack,
+							TargetIndex: enemyIndex,
 						}
 					}
 				}

@@ -42,3 +42,17 @@ var Cleave = internal.Attack{
 	Target: internal.Single,
 	Cost:   0,
 }
+
+var Bufu = internal.Attack{
+	Name:   "Bufu",
+	Type:   internal.Ice,
+	Target: internal.Single,
+	Cost:   4,
+}
+
+var Mabufu = internal.Attack{
+	Name:   "Mabufu",
+	Type:   internal.Ice,
+	Target: internal.All,
+	Cost:   8,
+}
