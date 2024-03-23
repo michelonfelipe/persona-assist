@@ -56,3 +56,17 @@ func TestSimpleWeakness(t *testing.T) {
 
 	assert.EqualValues(t, expected, result[0], "If there is only one enemy, it should return the attack that matches the enemy weakness, and has the least cost")
 }
+
+func TestAllAttack(t *testing.T) {
+	party := internal.Party{data.Mitsuru}
+	enemies := []internal.Enemy{data.JackLantern, data.JackLantern, data.JackLantern}
+
+	result := Assist(party, enemies)
+	expected := &internal.Result{
+		Persona: data.Penthesilea,
+		Attack:  data.Mabufu,
+		Enemy:   data.JackLantern,
+	}
+
+	assert.EqualValues(t, expected, result[0], "If the cost of a All attack is less than N Single attacks, the All attack should be chosen")
+}

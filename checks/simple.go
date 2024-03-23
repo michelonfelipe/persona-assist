@@ -13,11 +13,7 @@ func (s SimpleCheck) Check(member internal.Member, enemiesByWeakness internal.En
 				continue
 			}
 
-			if attack.Target == internal.All {
-				continue
-			}
-
-			if result == nil || result.Attack.Cost > attack.Cost {
+			if result == nil || worthChangeAttack(result, attack, enemiesByWeakness) {
 				result = &internal.Result{
 					Persona: persona,
 					Attack:  attack,
@@ -28,4 +24,21 @@ func (s SimpleCheck) Check(member internal.Member, enemiesByWeakness internal.En
 	}
 
 	return
+}
+
+func worthChangeAttack(result *internal.Result, newAttack internal.Attack, enemiesByWeakness internal.EnemiesByWeakness) bool {
+	// if they are have the same target, pick cheaper one
+	if newAttack.Target == result.Attack.Target {
+		return newAttack.Cost < result.Attack.Cost
+	}
+
+	// choose the best cost effective attack
+	toBeAffectedEnemies := len(enemiesByWeakness[newAttack.Type])
+
+	if result.Attack.Target == internal.Single {
+		return newAttack.Cost < result.Attack.Cost*toBeAffectedEnemies
+	}
+
+	return newAttack.Cost*toBeAffectedEnemies < result.Attack.Cost
+
 }
