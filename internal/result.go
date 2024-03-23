@@ -4,5 +4,5 @@ type Result struct {
 	Member
 	Persona
 	Attack
-	Target Persona
+	TargetIndex int
 }

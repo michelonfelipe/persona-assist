@@ -23,10 +23,10 @@ func TestSimpleWeakness(t *testing.T) {
 
 	result := Assist(party, enemies)
 	expected := internal.Result{
-		Member:  data.Protagonist,
-		Persona: data.Orpheus,
-		Attack:  data.Agi,
-		Target:  data.Valkyrie,
+		Member:      data.Protagonist,
+		Persona:     data.Orpheus,
+		Attack:      data.Agi,
+		TargetIndex: 0,
 	}
 
 	assert.EqualValues(t, expected, *result, "If there is only one enemy, it should return the attack that matches the enemy weakness, and has the least cost")
