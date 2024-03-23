@@ -33,7 +33,7 @@ This list has no particular order, it's just to ~~help me remember what should b
 - [x] If there are multiple attacks that could be chosen, pick the one with the lower cost
 - [x] Run the analysis on all members in parallel*
 - [x] Check if it's worth to do a single attack, or an attack that hits all enemies
-- [ ] Only select attacks that costs less than the remaining member PE
+- [x] Only select attacks that costs less than the remaining member PE
 - [ ] Add support of attacks that use Health points, instead of PE
   - [ ] Only use these attacks if the user will have more than 25% health after attacking
 - [ ] Add support of resistances (Resists, Blocks, Reflects, Absorbs)

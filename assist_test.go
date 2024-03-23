@@ -70,3 +70,14 @@ func TestAllAttack(t *testing.T) {
 
 	assert.EqualValues(t, expected, result[0], "If the cost of a All attack is less than N Single attacks, the All attack should be chosen")
 }
+
+func TestEnoughPE(t *testing.T) {
+	junpei := data.Junpei()
+	junpei.PE = 0
+	party := internal.Party{junpei}
+	enemies := []internal.Enemy{data.Valkyrie()}
+
+	result := Assist(party, enemies)
+
+	assert.Nil(t, result[0], "If the player has not enough PE to cast an attack, it should not be chosen")
+}

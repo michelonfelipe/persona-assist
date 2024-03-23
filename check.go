@@ -7,7 +7,8 @@ import (
 func check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) (result *internal.Result) {
 	for _, persona := range member.Personas {
 		for _, attack := range persona.Attacks {
-			if len(enemiesByWeakness[attack.Type]) == 0 {
+			if len(enemiesByWeakness[attack.Type]) == 0 || // any enemy have a weakness to the attack
+				member.PE < attack.Cost { // member has enough PE to use the attack
 				continue
 			}
 
