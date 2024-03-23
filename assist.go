@@ -3,18 +3,12 @@ package assist
 import (
 	"sync"
 
-	"github.com/michelonfelipe/persona-assist/checks"
 	"github.com/michelonfelipe/persona-assist/internal"
 )
-
-type Checkable interface {
-	Check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) *internal.Result
-}
 
 func Assist(party internal.Party, enemies []internal.Enemy) []*internal.Result {
 	var wg sync.WaitGroup
 	results := make([]*internal.Result, len(party))
-	checks := []Checkable{checks.SimpleCheck{}}
 	weaknessByEnemy := enemiesWeakness(enemies)
 
 	for index, member := range party {
@@ -23,15 +17,10 @@ func Assist(party internal.Party, enemies []internal.Enemy) []*internal.Result {
 		go func() {
 			defer wg.Done()
 
-			for _, checkable := range checks {
-				memberResult := checkable.Check(member, weaknessByEnemy)
-				if memberResult != nil {
-					results[index] = memberResult
-					break
-				}
-			}
+			results[index] = check(member, weaknessByEnemy)
 		}()
 	}
+
 	wg.Wait()
 	return results
 }

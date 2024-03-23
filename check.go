@@ -1,12 +1,10 @@
-package checks
+package assist
 
 import (
 	"github.com/michelonfelipe/persona-assist/internal"
 )
 
-type SimpleCheck struct{}
-
-func (s SimpleCheck) Check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) (result *internal.Result) {
+func check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) (result *internal.Result) {
 	for _, persona := range member.Personas {
 		for _, attack := range persona.Attacks {
 			if len(enemiesByWeakness[attack.Type]) == 0 {
@@ -40,5 +38,4 @@ func worthChangeAttack(result *internal.Result, newAttack internal.Attack, enemi
 	}
 
 	return newAttack.Cost*toBeAffectedEnemies < result.Attack.Cost
-
 }
