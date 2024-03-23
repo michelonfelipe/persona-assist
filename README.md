@@ -1,4 +1,5 @@
 ![badge from build status](https://github.com/michelonfelipe/persona-assist/actions/workflows/test.yml/badge.svg?branch=main)
+[![badge of Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons License](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # Persona assist
 
