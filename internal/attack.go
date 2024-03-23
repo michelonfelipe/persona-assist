@@ -25,9 +25,17 @@ const (
 	All
 )
 
+type AttackCostType int
+
+const (
+	PE AttackCostType = iota
+	HP
+)
+
 type Attack struct {
-	Name   string
-	Type   AttackType
-	Target AttackTarget
-	Cost   int
+	Name     string
+	Type     AttackType
+	Target   AttackTarget
+	Cost     int
+	CostType AttackCostType // PE points are straight up ints, but HP points are percentage based
 }
