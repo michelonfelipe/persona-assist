@@ -61,3 +61,13 @@ func JackLantern() internal.Persona {
 		Weaknesses: []internal.AttackType{internal.Ice},
 	}
 }
+
+func BlueSigil() internal.Persona {
+	return internal.Persona{
+		Name: "Blue Sigil",
+		Attacks: []internal.Attack{
+			Cleave(),
+		},
+		Weaknesses: []internal.AttackType{internal.Strike},
+	}
+}

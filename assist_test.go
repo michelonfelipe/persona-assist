@@ -26,17 +26,17 @@ func TestAllPartyResults(t *testing.T) {
 		{
 			Persona: data.Orpheus(),
 			Attack:  data.Agi(),
-			Enemy:   data.Valkyrie(),
+			Enemy:   enemies[0],
 		},
 		{
 			Persona: data.Hermes(),
 			Attack:  data.Agi(),
-			Enemy:   data.Valkyrie(),
+			Enemy:   enemies[0],
 		},
 		{
 			Persona: data.Penthesilea(),
 			Attack:  data.Bufu(),
-			Enemy:   data.JackLantern(),
+			Enemy:   enemies[1],
 		},
 	}
 
@@ -51,7 +51,7 @@ func TestSimpleWeakness(t *testing.T) {
 	expected := &internal.Result{
 		Persona: data.Orpheus(),
 		Attack:  data.Agi(),
-		Enemy:   data.Valkyrie(),
+		Enemy:   enemies[0],
 	}
 
 	assert.EqualValues(t, expected, result[0], "If there is only one enemy, it should return the attack that matches the enemy weakness, and has the least cost")
@@ -65,7 +65,7 @@ func TestAllAttack(t *testing.T) {
 	expected := &internal.Result{
 		Persona: data.Penthesilea(),
 		Attack:  data.Mabufu(),
-		Enemy:   data.JackLantern(),
+		Enemy:   enemies[0],
 	}
 
 	assert.EqualValues(t, expected, result[0], "If the cost of a All attack is less than N Single attacks, the All attack should be chosen")
@@ -80,4 +80,28 @@ func TestEnoughPE(t *testing.T) {
 	result := Assist(party, enemies)
 
 	assert.Nil(t, result[0], "If the player has not enough PE to cast an attack, it should not be chosen")
+}
+
+func TestEnoughHealth(t *testing.T) {
+	protagonist := data.Protagonist()
+	protagonist.CurrentHealth = protagonist.MaxHealth / 10
+	party := internal.Party{protagonist}
+	enemies := []internal.Enemy{data.BlueSigil()}
+
+	result := Assist(party, enemies)
+
+	assert.Nil(t, result[0], "If the player would end up with less than 30%% of their max health, a health cost attack should not be choosen")
+}
+
+func TestChooseHealthCostAttack(t *testing.T) {
+	party := internal.Party{data.Protagonist()}
+	enemies := []internal.Enemy{data.BlueSigil()}
+
+	result := Assist(party, enemies)
+	expected := &internal.Result{
+		Persona: data.Orpheus(),
+		Attack:  data.Bash(),
+		Enemy:   enemies[0],
+	}
+	assert.EqualValues(t, expected, result[0], "Should choose a health based attack if viable")
 }

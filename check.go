@@ -7,8 +7,7 @@ import (
 func check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) (result *internal.Result) {
 	for _, persona := range member.Personas {
 		for _, attack := range persona.Attacks {
-			if len(enemiesByWeakness[attack.Type]) == 0 || // any enemy have a weakness to the attack
-				member.PE < attack.Cost { // member has enough PE to use the attack
+			if !canUseAttack(enemiesByWeakness, member, attack) {
 				continue
 			}
 
@@ -39,4 +38,12 @@ func worthChangeAttack(result *internal.Result, newAttack internal.Attack, enemi
 	}
 
 	return newAttack.Cost*toBeAffectedEnemies < result.Attack.Cost
+}
+
+func canUseAttack(e internal.EnemiesByWeakness, member internal.Member, attack internal.Attack) bool {
+	anyEnemiesAreWeakToAttack := len(e[attack.Type]) > 0
+	hasEnoughPE := attack.CostType == internal.PE && member.PE >= attack.Cost
+	hasEnoughHealth := attack.CostType == internal.HP && member.CurrentHealth*attack.Cost/10 > member.MaxHealth/3
+
+	return anyEnemiesAreWeakToAttack && (hasEnoughPE || hasEnoughHealth)
 }
