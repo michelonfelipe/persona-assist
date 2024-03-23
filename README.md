@@ -1,4 +1,4 @@
-![badge from build status](https://github.com/michelonfelipe/persona-assist/actions/workflows/build.yml/badge.svg?branch=main)
+![badge from build status](https://github.com/michelonfelipe/persona-assist/actions/workflows/test.yml/badge.svg?branch=main)
 
 # Persona assist
 
