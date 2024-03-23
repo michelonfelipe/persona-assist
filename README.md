@@ -10,6 +10,10 @@ It is pretty good, but has some flaws, e.g. does not select a multi attack if wi
 
 This project is a rewrite of that algorithm, assuming a lot of things on which information we have about the fight, and just resulting in something that, **in my opinion**, is a better result.
 
+## How does it work?
+
+This algorithm will receive, as an input, the party with N members (N is an integer bigger than 0), and output the best attack (and the persona that has the given attack) that each party member can perform, and which enemy will receive the attack.
+
 
 ## How do we test it
 
@@ -22,7 +26,7 @@ Unit tests can be implemented in the future, but are not my priority.
 I was playing persona 3 reloaded, and got bothered that i need to tweak some of the `assist` feature. To be fair, i do not remember if these problems also exist in persona 5, and i'm not gonna play that 80h+ game just to be sure about this.
 
 
-## List of possible results
+## List of features
 This list has no particular order, it's just to ~~help me remember what should be done~~ exemplify what is being done
 
 - [x] Simply find a attack that hits an enemy weakness
