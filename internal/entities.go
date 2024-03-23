@@ -12,3 +12,7 @@ type Persona struct {
 	Attacks    []Attack
 	Weaknesses []AttackType
 }
+
+type Enemy = Persona
+
+type EnemiesByWeakness map[AttackType][]Enemy

@@ -10,7 +10,7 @@ import (
 
 func TestNoResult(t *testing.T) {
 	party := internal.Party{data.Protagonist}
-	enemies := []internal.Persona{data.Angel}
+	enemies := []internal.Enemy{data.Angel}
 
 	result := Assist(party, enemies)
 
@@ -19,24 +19,24 @@ func TestNoResult(t *testing.T) {
 
 func TestAllPartyResults(t *testing.T) {
 	party := internal.Party{data.Protagonist, data.Junpei, data.Mitsuru}
-	enemies := []internal.Persona{data.Valkyrie, data.JackLantern}
+	enemies := []internal.Enemy{data.Valkyrie, data.JackLantern}
 
 	result := Assist(party, enemies)
 	expected := []*internal.Result{
 		{
-			Persona:     data.Orpheus,
-			Attack:      data.Agi,
-			TargetIndex: 0,
+			Persona: data.Orpheus,
+			Attack:  data.Agi,
+			Enemy:   data.Valkyrie,
 		},
 		{
-			Persona:     data.Hermes,
-			Attack:      data.Agi,
-			TargetIndex: 0,
+			Persona: data.Hermes,
+			Attack:  data.Agi,
+			Enemy:   data.Valkyrie,
 		},
 		{
-			Persona:     data.Penthesilea,
-			Attack:      data.Bufu,
-			TargetIndex: 1,
+			Persona: data.Penthesilea,
+			Attack:  data.Bufu,
+			Enemy:   data.JackLantern,
 		},
 	}
 
@@ -45,13 +45,13 @@ func TestAllPartyResults(t *testing.T) {
 
 func TestSimpleWeakness(t *testing.T) {
 	party := internal.Party{data.Protagonist}
-	enemies := []internal.Persona{data.Valkyrie}
+	enemies := []internal.Enemy{data.Valkyrie}
 
 	result := Assist(party, enemies)
 	expected := &internal.Result{
-		Persona:     data.Orpheus,
-		Attack:      data.Agi,
-		TargetIndex: 0,
+		Persona: data.Orpheus,
+		Attack:  data.Agi,
+		Enemy:   data.Valkyrie,
 	}
 
 	assert.EqualValues(t, expected, result[0], "If there is only one enemy, it should return the attack that matches the enemy weakness, and has the least cost")

@@ -8,10 +8,10 @@ import (
 )
 
 type Checkable interface {
-	Check(member internal.Member, weaknessByEnemy [][]internal.AttackType) *internal.Result
+	Check(member internal.Member, enemiesByWeakness internal.EnemiesByWeakness) *internal.Result
 }
 
-func Assist(party internal.Party, enemies []internal.Persona) []*internal.Result {
+func Assist(party internal.Party, enemies []internal.Enemy) []*internal.Result {
 	var wg sync.WaitGroup
 	results := make([]*internal.Result, len(party))
 	checks := []Checkable{checks.SimpleCheck{}}
@@ -36,10 +36,14 @@ func Assist(party internal.Party, enemies []internal.Persona) []*internal.Result
 	return results
 }
 
-func enemiesWeakness(enemies []internal.Persona) (result [][]internal.AttackType) {
+func enemiesWeakness(enemies []internal.Enemy) internal.EnemiesByWeakness {
+	result := make(internal.EnemiesByWeakness)
+
 	for _, enemy := range enemies {
-		result = append(result, enemy.Weaknesses)
+		for _, weakness := range enemy.Weaknesses {
+			result[weakness] = append(result[weakness], enemy)
+		}
 	}
 
-	return
+	return result
 }
