@@ -29,8 +29,10 @@ func enemiesWeakness(enemies []internal.Enemy) internal.EnemiesByWeakness {
 	result := make(internal.EnemiesByWeakness)
 
 	for _, enemy := range enemies {
-		for _, weakness := range enemy.Weaknesses {
-			result[weakness] = append(result[weakness], enemy)
+		for attackType, reaction := range enemy.Reactions {
+			if reaction == internal.Weak {
+				result[attackType] = append(result[attackType], enemy)
+			}
 		}
 	}
 

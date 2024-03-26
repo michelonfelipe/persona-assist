@@ -49,7 +49,7 @@ This list has no particular order, it's just to ~~help me remember what should b
 - [x] Only select attacks that costs less than the remaining member PE
 - [x] Add support of attacks that use Health points, instead of PE
   - [x] Only use these attacks if the user will have more than 30% health after attacking
-- [ ] Add support of resistances (Resists, Blocks, Reflects, Absorbs)
+- [x] Add support of resistances (Resists, Blocks, Reflects, Absorbs)
   - [ ] Do not use an attack if any enemy will resist it (focused on multi attacks)
 - [ ] Support of knowing whose turn is
   - [ ] Check if worth to pass the turn to other member if is more cost-effective

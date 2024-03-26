@@ -8,7 +8,7 @@ func Orpheus() internal.Persona {
 		Attacks: []internal.Attack{
 			Bash(), Agi(), Agilao(),
 		},
-		Weaknesses: []internal.AttackType{internal.Darkness, internal.Electricity},
+		Reactions: internal.Reactions{internal.Darkness: internal.Weak, internal.Electricity: internal.Weak},
 	}
 }
 
@@ -18,7 +18,7 @@ func Angel() internal.Persona {
 		Attacks: []internal.Attack{
 			SingleShot(), Garu(),
 		},
-		Weaknesses: []internal.AttackType{internal.Darkness},
+		Reactions: internal.Reactions{internal.Darkness: internal.Weak},
 	}
 }
 
@@ -28,7 +28,7 @@ func Valkyrie() internal.Persona {
 		Attacks: []internal.Attack{
 			SingleShot(), Garu(),
 		},
-		Weaknesses: []internal.AttackType{internal.Fire},
+		Reactions: internal.Reactions{internal.Fire: internal.Weak},
 	}
 }
 
@@ -38,7 +38,7 @@ func Penthesilea() internal.Persona {
 		Attacks: []internal.Attack{
 			Bufu(), Mabufu(),
 		},
-		Weaknesses: []internal.AttackType{internal.Fire},
+		Reactions: internal.Reactions{internal.Fire: internal.Weak},
 	}
 }
 
@@ -48,7 +48,7 @@ func Hermes() internal.Persona {
 		Attacks: []internal.Attack{
 			Cleave(), Agi(),
 		},
-		Weaknesses: []internal.AttackType{internal.Wind},
+		Reactions: internal.Reactions{internal.Wind: internal.Weak},
 	}
 }
 
@@ -58,7 +58,7 @@ func JackLantern() internal.Persona {
 		Attacks: []internal.Attack{
 			Agi(),
 		},
-		Weaknesses: []internal.AttackType{internal.Ice},
+		Reactions: internal.Reactions{internal.Ice: internal.Weak},
 	}
 }
 
@@ -68,6 +68,6 @@ func BlueSigil() internal.Persona {
 		Attacks: []internal.Attack{
 			Cleave(),
 		},
-		Weaknesses: []internal.AttackType{internal.Strike},
+		Reactions: internal.Reactions{internal.Strike: internal.Weak},
 	}
 }
