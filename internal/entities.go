@@ -12,7 +12,7 @@ type Member struct {
 type Reaction int
 
 const (
-	Weak Reaction = iota
+	Weak Reaction = iota + 1
 	Resists
 	Absorbs
 	Reflects
@@ -27,5 +27,3 @@ type Persona struct {
 }
 
 type Enemy = Persona
-
-type EnemiesByWeakness map[AttackType][]Enemy

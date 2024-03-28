@@ -5,7 +5,7 @@ type AttackType int
 // Using Persona 3 Reloaded types
 const (
 	// Physical
-	Slash AttackType = iota
+	Slash AttackType = iota + 1
 	Strike
 	Pierce
 
@@ -21,14 +21,14 @@ const (
 type AttackTarget int
 
 const (
-	Single AttackTarget = iota
+	Single AttackTarget = iota + 1
 	All
 )
 
 type AttackCostType int
 
 const (
-	PE AttackCostType = iota
+	PE AttackCostType = iota + 1
 	HP
 )
 
