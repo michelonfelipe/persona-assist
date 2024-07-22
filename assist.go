@@ -13,11 +13,11 @@ func Assist(party internal.Party, enemies []internal.Enemy) []*internal.Result {
 	for index, member := range party {
 		wg.Add(1)
 
-		go func() {
+		go func(i int, m internal.Member) {
 			defer wg.Done()
 
-			results[index] = check(member, enemies)
-		}()
+			results[i] = check(m, enemies)
+		}(index, member)
 	}
 
 	wg.Wait()
